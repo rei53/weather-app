@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ベトナム・マレーシア・タイ 天気ガイド | 旅行前に知る現地の天気・時間・空気環境</title>
+<title>ベトナム・マレーシア・タイ・インドネシア 天気ガイド | 旅行前に知る現地の天気・時間・空気環境</title>
 <style>
   :root {
     --accent: #38bdf8;
@@ -545,7 +545,7 @@
   <div class="container">
     <header>
       <div class="icon">🌏</div>
-      <h1>ベトナム・マレーシア・タイ 天気ガイド</h1>
+      <h1>ベトナム・マレーシア・タイ・インドネシア 天気ガイド</h1>
       <p>旅行前に、現地の天気・時間・空気環境をチェック</p>
     </header>
 
@@ -576,6 +576,13 @@
               <option value="pattaya">パタヤ</option>
               <option value="krabi">クラビ</option>
             </optgroup>
+            <optgroup label="🇮🇩 インドネシア">
+              <option value="denpasar">デンパサール（バリ）</option>
+              <option value="ubud">ウブド（バリ）</option>
+              <option value="kuta">クタ（バリ）</option>
+              <option value="jakarta">ジャカルタ</option>
+              <option value="yogyakarta">ジョグジャカルタ</option>
+            </optgroup>
           </select>
         </div>
         <button id="searchBtn" type="button">
@@ -583,7 +590,7 @@
         </button>
       </div>
       <button class="geo-btn" id="geoBtn" type="button">📍 現在地の天気を見る</button>
-      <div class="hint">ベトナム・マレーシア・タイの主要都市から選べます</div>
+      <div class="hint">ベトナム・マレーシア・タイ・インドネシアの主要都市から選べます</div>
     </div>
 
     <div class="result-area" id="resultArea"></div>
@@ -665,7 +672,12 @@
     chiangmai: { name: 'チェンマイ', admin1: 'チェンマイ県', country: 'タイ', countryCode: 'th', latitude: 18.7883, longitude: 98.9853 },
     phuket: { name: 'プーケット', admin1: 'プーケット県', country: 'タイ', countryCode: 'th', latitude: 7.8804, longitude: 98.3923 },
     pattaya: { name: 'パタヤ', admin1: 'チョンブリー県', country: 'タイ', countryCode: 'th', latitude: 12.9236, longitude: 100.8825 },
-    krabi: { name: 'クラビ', admin1: 'クラビ県', country: 'タイ', countryCode: 'th', latitude: 8.0863, longitude: 98.9063 }
+    krabi: { name: 'クラビ', admin1: 'クラビ県', country: 'タイ', countryCode: 'th', latitude: 8.0863, longitude: 98.9063 },
+    denpasar: { name: 'デンパサール（バリ）', admin1: 'バリ州', country: 'インドネシア', countryCode: 'id', latitude: -8.6705, longitude: 115.2126 },
+    ubud: { name: 'ウブド（バリ）', admin1: 'バリ州', country: 'インドネシア', countryCode: 'id', latitude: -8.5069, longitude: 115.2625 },
+    kuta: { name: 'クタ（バリ）', admin1: 'バリ州', country: 'インドネシア', countryCode: 'id', latitude: -8.7231, longitude: 115.1685 },
+    jakarta: { name: 'ジャカルタ', admin1: '首都特別州', country: 'インドネシア', countryCode: 'id', latitude: -6.2088, longitude: 106.8456 },
+    yogyakarta: { name: 'ジョグジャカルタ', admin1: 'ジョグジャカルタ特別州', country: 'インドネシア', countryCode: 'id', latitude: -7.7956, longitude: 110.3695 }
   };
 
   function offsetToString(seconds) {
@@ -1131,7 +1143,7 @@
     const cityKey = citySelect.value;
 
     if (!cityKey) {
-      renderMessage('✏️', '都市を選択してください', 'ベトナム・マレーシア・タイの都市から選べます');
+      renderMessage('✏️', '都市を選択してください', 'ベトナム・マレーシア・タイ・インドネシアの都市から選べます');
       return;
     }
 
