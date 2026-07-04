@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ベトナム・マレーシア 天気ガイド | 旅行前に知る現地の天気・時間・空気環境</title>
+<title>ベトナム・マレーシア・タイ 天気ガイド | 旅行前に知る現地の天気・時間・空気環境</title>
 <style>
   :root {
     --accent: #38bdf8;
@@ -545,7 +545,7 @@
   <div class="container">
     <header>
       <div class="icon">🌏</div>
-      <h1>ベトナム・マレーシア 天気ガイド</h1>
+      <h1>ベトナム・マレーシア・タイ 天気ガイド</h1>
       <p>旅行前に、現地の天気・時間・空気環境をチェック</p>
     </header>
 
@@ -569,6 +569,13 @@
               <option value="malacca">マラッカ</option>
               <option value="kotakinabalu">コタキナバル</option>
             </optgroup>
+            <optgroup label="🇹🇭 タイ">
+              <option value="bangkok">バンコク</option>
+              <option value="chiangmai">チェンマイ</option>
+              <option value="phuket">プーケット</option>
+              <option value="pattaya">パタヤ</option>
+              <option value="krabi">クラビ</option>
+            </optgroup>
           </select>
         </div>
         <button id="searchBtn" type="button">
@@ -576,7 +583,7 @@
         </button>
       </div>
       <button class="geo-btn" id="geoBtn" type="button">📍 現在地の天気を見る</button>
-      <div class="hint">ベトナム・マレーシアの主要都市から選べます</div>
+      <div class="hint">ベトナム・マレーシア・タイの主要都市から選べます</div>
     </div>
 
     <div class="result-area" id="resultArea"></div>
@@ -653,7 +660,12 @@
     penang: { name: 'ペナン（ジョージタウン）', admin1: 'ペナン州', country: 'マレーシア', countryCode: 'my', latitude: 5.4141, longitude: 100.3288 },
     langkawi: { name: 'ランカウイ', admin1: 'クダ州', country: 'マレーシア', countryCode: 'my', latitude: 6.3500, longitude: 99.8000 },
     malacca: { name: 'マラッカ', admin1: 'マラッカ州', country: 'マレーシア', countryCode: 'my', latitude: 2.1896, longitude: 102.2501 },
-    kotakinabalu: { name: 'コタキナバル', admin1: 'サバ州', country: 'マレーシア', countryCode: 'my', latitude: 5.9804, longitude: 116.0735 }
+    kotakinabalu: { name: 'コタキナバル', admin1: 'サバ州', country: 'マレーシア', countryCode: 'my', latitude: 5.9804, longitude: 116.0735 },
+    bangkok: { name: 'バンコク', admin1: 'バンコク都', country: 'タイ', countryCode: 'th', latitude: 13.7563, longitude: 100.5018 },
+    chiangmai: { name: 'チェンマイ', admin1: 'チェンマイ県', country: 'タイ', countryCode: 'th', latitude: 18.7883, longitude: 98.9853 },
+    phuket: { name: 'プーケット', admin1: 'プーケット県', country: 'タイ', countryCode: 'th', latitude: 7.8804, longitude: 98.3923 },
+    pattaya: { name: 'パタヤ', admin1: 'チョンブリー県', country: 'タイ', countryCode: 'th', latitude: 12.9236, longitude: 100.8825 },
+    krabi: { name: 'クラビ', admin1: 'クラビ県', country: 'タイ', countryCode: 'th', latitude: 8.0863, longitude: 98.9063 }
   };
 
   function offsetToString(seconds) {
@@ -1119,7 +1131,7 @@
     const cityKey = citySelect.value;
 
     if (!cityKey) {
-      renderMessage('✏️', '都市を選択してください', 'ベトナム・マレーシアの都市から選べます');
+      renderMessage('✏️', '都市を選択してください', 'ベトナム・マレーシア・タイの都市から選べます');
       return;
     }
 
