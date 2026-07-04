@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>世界の天気 | 旅行前に知る現地の天気・時間・空気環境</title>
+<title>ベトナム・マレーシア 天気ガイド | 旅行前に知る現地の天気・時間・空気環境</title>
 <style>
   :root {
     --accent: #38bdf8;
@@ -116,6 +116,34 @@
 
   input[type="text"]::placeholder {
     color: #5b6784;
+  }
+
+  select {
+    width: 100%;
+    font-size: 16px;
+    padding: 13px 16px;
+    border: 1.5px solid var(--border);
+    border-radius: 12px;
+    outline: none;
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--text);
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%2394a3b8'%3E%3Cpath fill-rule='evenodd' d='M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z' clip-rule='evenodd'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    background-size: 18px;
+  }
+
+  select:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 4px rgba(56, 189, 248, 0.15);
+  }
+
+  select option, select optgroup {
+    background: #111a2e;
+    color: var(--text);
   }
 
   button {
@@ -462,39 +490,6 @@
     color: var(--text-dim);
   }
 
-  .candidate-list {
-    margin-top: 14px;
-    display: grid;
-    gap: 8px;
-    text-align: left;
-  }
-
-  .candidate-btn {
-    width: 100%;
-    text-align: left;
-    background: rgba(255, 255, 255, 0.04);
-    color: var(--text);
-    border: 1.5px solid var(--border);
-    box-shadow: none;
-    font-weight: 600;
-    font-size: 13.5px;
-    padding: 12px 14px;
-    justify-content: flex-start;
-  }
-
-  .candidate-btn:hover {
-    border-color: var(--accent);
-    background: rgba(56, 189, 248, 0.08);
-    transform: none;
-  }
-
-  .candidate-btn .sub {
-    font-weight: 400;
-    color: var(--text-dim);
-    font-size: 12px;
-    margin-left: 8px;
-  }
-
   .spinner {
     width: 18px;
     height: 18px;
@@ -549,37 +544,48 @@
 <body>
   <div class="container">
     <header>
-      <div class="icon">🌍</div>
-      <h1>世界の天気</h1>
+      <div class="icon">🌏</div>
+      <h1>ベトナム・マレーシア 天気ガイド</h1>
       <p>旅行前に、現地の天気・時間・空気環境をチェック</p>
     </header>
 
     <div class="card">
-      <label for="cityInput">都市名</label>
+      <label for="citySelect">都市を選択</label>
       <div class="search-row">
         <div class="input-wrap">
-          <input
-            id="cityInput"
-            type="text"
-            autocomplete="off"
-            placeholder="例: 東京, パリ, New York, Bangkok"
-          />
+          <select id="citySelect">
+            <option value="" disabled selected>都市を選択してください</option>
+            <optgroup label="🇻🇳 ベトナム">
+              <option value="hanoi">ハノイ</option>
+              <option value="hochiminh">ホーチミン</option>
+              <option value="danang">ダナン</option>
+              <option value="hoian">ホイアン</option>
+              <option value="nhatrang">ニャチャン</option>
+            </optgroup>
+            <optgroup label="🇲🇾 マレーシア">
+              <option value="kualalumpur">クアラルンプール</option>
+              <option value="penang">ペナン（ジョージタウン）</option>
+              <option value="langkawi">ランカウイ</option>
+              <option value="malacca">マラッカ</option>
+              <option value="kotakinabalu">コタキナバル</option>
+            </optgroup>
+          </select>
         </div>
         <button id="searchBtn" type="button">
           <span id="btnLabel">検索</span>
         </button>
       </div>
       <button class="geo-btn" id="geoBtn" type="button">📍 現在地の天気を見る</button>
-      <div class="hint">日本語・英語どちらの都市名でも検索できます</div>
+      <div class="hint">ベトナム・マレーシアの主要都市から選べます</div>
     </div>
 
     <div class="result-area" id="resultArea"></div>
 
-    <footer>Powered by <a href="https://api.met.no/" target="_blank" rel="noopener">MET Norway</a> · <a href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo</a> · <a href="https://nominatim.org/" target="_blank" rel="noopener">OpenStreetMap</a> · <a href="https://timeapi.io/" target="_blank" rel="noopener">TimeAPI.io</a></footer>
+    <footer>Powered by <a href="https://api.met.no/" target="_blank" rel="noopener">MET Norway</a> · <a href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo</a> · <a href="https://timeapi.io/" target="_blank" rel="noopener">TimeAPI.io</a></footer>
   </div>
 
 <script>
-  const cityInput = document.getElementById('cityInput');
+  const citySelect = document.getElementById('citySelect');
   const searchBtn = document.getElementById('searchBtn');
   const geoBtn = document.getElementById('geoBtn');
   const btnLabel = document.getElementById('btnLabel');
@@ -637,19 +643,18 @@
     });
   }
 
-  function parseNominatimResult(r) {
-    const addr = r.address || {};
-    const parts = r.display_name.split(',').map(function (s) { return s.trim(); });
-    const cityName = addr.city || addr.town || addr.village || addr.municipality || addr.county || parts[0];
-    return {
-      name: cityName,
-      admin1: addr.state || addr.region || '',
-      country: addr.country || parts[parts.length - 1],
-      countryCode: addr.country_code || '',
-      latitude: parseFloat(r.lat),
-      longitude: parseFloat(r.lon)
-    };
-  }
+  const CITY_DATA = {
+    hanoi: { name: 'ハノイ', admin1: '北部', country: 'ベトナム', countryCode: 'vn', latitude: 21.0285, longitude: 105.8542 },
+    hochiminh: { name: 'ホーチミン', admin1: '南部', country: 'ベトナム', countryCode: 'vn', latitude: 10.8231, longitude: 106.6297 },
+    danang: { name: 'ダナン', admin1: '中部', country: 'ベトナム', countryCode: 'vn', latitude: 16.0544, longitude: 108.2022 },
+    hoian: { name: 'ホイアン', admin1: '中部', country: 'ベトナム', countryCode: 'vn', latitude: 15.8801, longitude: 108.3380 },
+    nhatrang: { name: 'ニャチャン', admin1: '中南部', country: 'ベトナム', countryCode: 'vn', latitude: 12.2388, longitude: 109.1967 },
+    kualalumpur: { name: 'クアラルンプール', admin1: '連邦直轄区', country: 'マレーシア', countryCode: 'my', latitude: 3.1390, longitude: 101.6869 },
+    penang: { name: 'ペナン（ジョージタウン）', admin1: 'ペナン州', country: 'マレーシア', countryCode: 'my', latitude: 5.4141, longitude: 100.3288 },
+    langkawi: { name: 'ランカウイ', admin1: 'クダ州', country: 'マレーシア', countryCode: 'my', latitude: 6.3500, longitude: 99.8000 },
+    malacca: { name: 'マラッカ', admin1: 'マラッカ州', country: 'マレーシア', countryCode: 'my', latitude: 2.1896, longitude: 102.2501 },
+    kotakinabalu: { name: 'コタキナバル', admin1: 'サバ州', country: 'マレーシア', countryCode: 'my', latitude: 5.9804, longitude: 116.0735 }
+  };
 
   function offsetToString(seconds) {
     const sign = seconds >= 0 ? '+' : '-';
@@ -759,50 +764,6 @@
     card.appendChild(titleEl);
     card.appendChild(subEl);
     resultArea.appendChild(card);
-  }
-
-  function renderCandidates(candidates) {
-    stopClock();
-    resultArea.innerHTML = '';
-    const wrap = document.createElement('div');
-    wrap.className = 'message-card';
-
-    const iconEl = document.createElement('span');
-    iconEl.className = 'm-icon';
-    iconEl.textContent = '🔍';
-    const titleEl = document.createElement('div');
-    titleEl.className = 'm-title';
-    titleEl.textContent = '候補が複数見つかりました';
-    const subEl = document.createElement('div');
-    subEl.className = 'm-sub';
-    subEl.textContent = '表示したい場所を選んでください';
-
-    wrap.appendChild(iconEl);
-    wrap.appendChild(titleEl);
-    wrap.appendChild(subEl);
-
-    const list = document.createElement('div');
-    list.className = 'candidate-list';
-
-    candidates.forEach(function (c) {
-      const btn = document.createElement('button');
-      btn.type = 'button';
-      btn.className = 'candidate-btn';
-      const flag = countryCodeToFlag(c.countryCode);
-      const namePart = document.createTextNode((flag ? flag + ' ' : '') + c.name);
-      const subPart = document.createElement('span');
-      subPart.className = 'sub';
-      subPart.textContent = [c.admin1, c.country].filter(Boolean).join(', ');
-      btn.appendChild(namePart);
-      btn.appendChild(subPart);
-      btn.addEventListener('click', function () {
-        loadWeather(c);
-      });
-      list.appendChild(btn);
-    });
-
-    wrap.appendChild(list);
-    resultArea.appendChild(wrap);
   }
 
   function buildForecast(timeseries) {
@@ -1155,43 +1116,14 @@
   }
 
   async function search() {
-    const query = cityInput.value.trim();
+    const cityKey = citySelect.value;
 
-    if (query.length === 0) {
-      renderMessage('✏️', '都市名を入力してください', '例: 東京, パリ, New York, Bangkok');
+    if (!cityKey) {
+      renderMessage('✏️', '都市を選択してください', 'ベトナム・マレーシアの都市から選べます');
       return;
     }
 
-    setLoading(true);
-    stopClock();
-    resultArea.innerHTML = '';
-
-    try {
-      const geoUrl = 'https://nominatim.openstreetmap.org/search?q=' +
-        encodeURIComponent(query) + '&format=json&limit=5&accept-language=ja&addressdetails=1';
-      const geoRes = await fetch(geoUrl);
-      if (!geoRes.ok) throw new Error('network');
-      const geoResults = await geoRes.json();
-
-      if (!geoResults || geoResults.length === 0) {
-        renderMessage('🔍', '該当する都市が見つかりません', '「' + query + '」のスペルや表記を確認してください', 'error');
-        return;
-      }
-
-      const places = geoResults.map(parseNominatimResult);
-
-      if (places.length === 1) {
-        await loadWeather(places[0]);
-      } else {
-        setLoading(false);
-        renderCandidates(places);
-      }
-    } catch (err) {
-      renderMessage('📡', '通信エラーが発生しました', 'ネットワーク接続を確認して再度お試しください', 'error');
-      setLoading(false);
-    } finally {
-      if (searchBtn.disabled) setLoading(false);
-    }
+    await loadWeather(CITY_DATA[cityKey]);
   }
 
   function useGeolocation() {
@@ -1223,13 +1155,7 @@
 
   searchBtn.addEventListener('click', search);
   geoBtn.addEventListener('click', useGeolocation);
-  cityInput.addEventListener('keydown', function (e) {
-    if (e.key === 'Enter') {
-      search();
-    }
-  });
-
-  cityInput.focus();
+  citySelect.addEventListener('change', search);
 </script>
 </body>
 </html>
